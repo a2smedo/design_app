@@ -86,7 +86,7 @@ class AuthController extends Controller
                 'expired_at' => Carbon::now()->addHour()
             ]);
 
-            Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+//            Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
             return callback_data(200, 'registered', $user);
         } else {
             return callback_data(401, 'user_not_found');
@@ -133,8 +133,8 @@ class AuthController extends Controller
             }
 
             $token = $user->createToken('token')->accessToken;
-
-            return callback_data(200, 'logged_in', ['user' => $user, 'token' => $token]);
+            $user->token = $token;
+            return callback_data(200, 'logged_in', $user);
         }
     }
 

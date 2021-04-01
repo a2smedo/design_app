@@ -7,6 +7,11 @@ return
             'ar' => 'حدث خطأ ما',
             'en' => 'Something Went wrong ',
         ],
+        'Unauthenticated' =>
+        [
+            'ar' => 'غير مصرح بالدخول',
+            'en' => 'Unauthenticated',
+        ],
         'check_lang' => 'Please Check your language',
         'check_jwt' =>
         [

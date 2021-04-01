@@ -16,7 +16,7 @@ class CreateCompetitiondesignUserTable extends Migration
         Schema::create('competitiondesign_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('competitiondesign_id')->constrained()->onDelete('cascade');
+            $table->foreignId('competition_design_id')->constrained()->onDelete('cascade');
             $table->float('rate', 3,1);
             $table->timestamps();
         });
