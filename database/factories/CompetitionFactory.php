@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Competition;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CompetitionFactory extends Factory
@@ -30,8 +31,8 @@ class CompetitionFactory extends Factory
                 'en' => $this->faker->word(),
                 'ar' => $this->faker->word(),
             ]),
-
-            'expired_at' => $this->faker->date('Y-m-d', '2021-3-30'),
+            'started_at' => Carbon::now(),
+            'expired_at' => Carbon::now()->addWeek(),
         ];
     }
 }

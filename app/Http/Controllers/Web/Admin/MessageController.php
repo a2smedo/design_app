@@ -39,11 +39,11 @@ class MessageController extends Controller
         $message = $request->message;
         $receiverMail = $contact->email;
 
-        Mail::to($receiverMail)->send(new ContactResponseMail([
-            'name' => $name,
-            'subject' => $subject,
-            'message' => $message
-        ]));
+//        Mail::to($receiverMail)->send(new ContactResponseMail([
+//            'name' => $name,
+//            'subject' => $subject,
+//            'message' => $message
+//        ]));
 
         $request->session()->flash('msgSend', "Message sended Successfly");
         return redirect(url("/dashboard/messages"));

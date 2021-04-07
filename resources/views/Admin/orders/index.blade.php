@@ -42,13 +42,6 @@ Orders
         @endif
       </div>
     </div> --}}
-
-
-    @if ($orders->isEmpty() )
-    <div>
-        <p> No Orders found </p>
-    </div>
-    @else
     <div class="row">
       <div class="col">
 
@@ -74,7 +67,7 @@ Orders
               </tr>
             </thead>
             <tbody>
-              @foreach ($orders as $order)
+            @forelse ($orders as $order)
 
                 <tr id="tr">
                   <td> {{ $loop->iteration }} </td>
@@ -117,7 +110,9 @@ Orders
 
                   </td>
                 </tr>
-              @endforeach
+              @empty
+                  <p> No Orders found </p>
+            @endforelse
             </tbody>
           </table>
 
@@ -129,7 +124,6 @@ Orders
 
       </div>
     </div>
-    @endif
 
 
   </div>

@@ -86,7 +86,7 @@ class AuthController extends Controller
                 'expired_at' => Carbon::now()->addHour()
             ]);
 
-           Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+//           Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
             return callback_data(200, 'registered', $user);
         } else {
             return callback_data(401, 'user_not_found');
@@ -97,7 +97,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            'email' => 'required|exists:users,email',
             'password' => 'required',
         ]);
 
@@ -128,7 +128,7 @@ class AuthController extends Controller
                     'expired_at' => Carbon::now()->addHour()
                 ]);
                 $code = verification_code();
-                Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+//                Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
                 return callback_data(402, 'user_not_activated');
             }
 
@@ -169,8 +169,8 @@ class AuthController extends Controller
                 'expired_at' => Carbon::now()->addHour()
             ]);
 
-            Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
-            return callback_data(402, 'user_not_activated');
+//            Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+            return callback_data(200, 'code_sent');
         }
 
         $emails_check = Verification::pluck('email')->toArray();
@@ -188,7 +188,7 @@ class AuthController extends Controller
             $verification->save();
         }
 
-        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+//        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
         return callback_data(200, 'code_sent');
     }
 
