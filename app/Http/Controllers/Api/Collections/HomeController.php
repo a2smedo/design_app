@@ -15,15 +15,24 @@ class HomeController extends Controller
     public function index()
     {
        $user = Auth::user();
-       $cats = CatResource::collection(Cat::get());
-       $designs = DesignResource::collection(Design::get());
+       $cats = CatResource::collection(Cat::active()->get());
+       $design_sliders = DesignResource::collection(
+           Design::where('slider', 'used')->orderBy('id', 'DESC')->active()->get()
+        );
+       $offers = DesignResource::collection(
+           Design::where('discount', '!=', '0')->orderBy('id', 'DESC')->active()->get()
+        );
 
-       return callback_data(200 ,'' , [
-        //    'user' => $user->id,
+       return callback_data(200 ,'home' , [
+           'user' => $user,
            'cats' => $cats,
-           'designs' => $designs
+           'design_sliders' => $design_sliders,
+           'offers' => $offers
        ]);
-
-
     }
+
+    
+
+
+
 }

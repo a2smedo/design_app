@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         return $this->call([
             RuleSeeder::class,
             PackageSeeder::class,
-            CatSeeder::class
+            CatSeeder::class,
+            UserSeeder::class,
+            CompetitionSeeder::class
 
         ]);
     }

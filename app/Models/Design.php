@@ -73,4 +73,9 @@ class Design extends Model
         $lang = $lang ?? App::getLocale();
         return json_decode($this->details)->$lang;
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 }

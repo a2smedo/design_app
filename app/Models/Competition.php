@@ -12,7 +12,7 @@ class Competition extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function competition_designs()
+    public function competitionDesigns()
     {
         return $this->hasMany(CompetitionDesign::class);
     }
@@ -27,5 +27,10 @@ class Competition extends Model
     {
         $lang = $lang ?? App::getLocale();
         return json_decode($this->desc)->$lang;
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
     }
 }

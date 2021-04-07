@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'rule_id',
         'phone',
+        'type',
+        'status'
 
     ];
 

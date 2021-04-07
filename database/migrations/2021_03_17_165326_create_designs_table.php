@@ -17,6 +17,7 @@ class CreateDesignsTable extends Migration
             $table->id();
             $table->foreignId('cat_id')->constrained()->onDelete('cascade');
             $table->text('name');
+            $table->enum('slider',['used','unused'])->default('unused');
             $table->string('main_img', 255)->nullable();
             $table->text('desc');
             $table->decimal('price', 10,2);
@@ -27,6 +28,7 @@ class CreateDesignsTable extends Migration
             $table->string('color', 255)->nullable();
             $table->text('details');
             $table->float('rate', 3,1);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

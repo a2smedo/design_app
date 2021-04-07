@@ -20,6 +20,7 @@ class CreateCompetitionDesignsTable extends Migration
             $table->string('img', 255);
             $table->text('desc');
             $table->float('rate', 3,1);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

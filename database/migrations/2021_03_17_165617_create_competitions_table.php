@@ -17,7 +17,9 @@ class CreateCompetitionsTable extends Migration
             $table->id();
             $table->text('name');
             $table->text('desc');
+            $table->dateTime('started_at');
             $table->dateTime('expired_at');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

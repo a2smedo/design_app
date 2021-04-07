@@ -14,7 +14,8 @@ class DesignController extends Controller
 {
     public function index()
     {
-        $designs  = DesignResource::collection(Design::get());
+        $designs  = DesignResource::collection(Design::orderBy('id', 'DESC')
+        ->active()->get());
 
         if ($designs->isEmpty()) {
             return callback_data(401, 'no_data', []);
@@ -25,7 +26,7 @@ class DesignController extends Controller
 
     public function show(Request $request)
     {
-        $design = design::with('designimgs')->find($request->id);
+        $design = Design::active()->with('designimgs')->find($request->id);
 
         if (!$design) {
             return callback_data(401, 'no_data');
@@ -87,12 +88,15 @@ class DesignController extends Controller
 
     public function getOffers()
     {
-        $designs = DesignResource::collection(Design::where('discount', '!=', 0)->get());
+        $designs = DesignResource::collection(Design::where('discount', '!=', 0)
+            ->orderBy('id', 'DESC')
+            ->active()
+            ->get());
 
 
         //dd($designs);
 
-        if ($designs->isEmpty() ) {
+        if ($designs->isEmpty()) {
             return callback_data(401, 'no_offers');
         }
 

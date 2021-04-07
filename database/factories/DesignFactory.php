@@ -27,7 +27,8 @@ class DesignFactory extends Factory
                 'ar' => $this->faker->word(),
             ]),
 
-            'main_img' => $this->faker->sentence(3),
+            'main_img' => 'designs/design.jpg',
+
 
             'desc' => json_encode([
                 'en' => $this->faker->text(50),
@@ -43,7 +44,7 @@ class DesignFactory extends Factory
                 'ar' => $this->faker->word(),
             ]),
 
-            'background' => $this->faker->sentence(3),
+            'background' => 'designs/background.jpg',
 
             'font' => json_encode([
                 'en' => $this->faker->word(),
@@ -58,8 +59,8 @@ class DesignFactory extends Factory
                 'en' => $this->faker->text(50),
                 'ar' => $this->faker->text(50),
             ]),
-
-            'rate' => 0
+            'rate' => 0,
+            
 
         ];
     }

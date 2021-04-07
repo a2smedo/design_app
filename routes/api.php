@@ -48,34 +48,28 @@ Route::middleware('lang')->group(function () {
     //packages
     Route::get('/packages', [PackageController::class, 'getPackages']);
 
-    //Home
-    //Route::get('/', [HomeController::class, 'index']);
-
-
-    //Categories
-    Route::get('cats', [CatController::class, 'index']);
-    Route::get('cats/show/{id}', [CatController::class, 'show']);
-
-    //Designs
-    Route::get('designs', [DesignController::class, 'index']);
-    Route::get('designs/show/{id}', [DesignController::class, 'show']);
-    Route::get('designs/offers', [DesignController::class, 'getOffers']);
-
-    //Competitions
-    Route::get('competitions', [CompetitionController::class, 'index']);
-    Route::get('competitions/show/{id}', [CompetitionController::class, 'show']);
-    Route::get('competitions/designs', [CompetitionController::class, 'getAllCompetitionDesigns']);
-
-
     Route::middleware('auth:api')->group(function () {
 
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/update/profile', [AuthController::class, 'updateProfil']);
-        //choose package
-        Route::post('/packages/choose-package/{package}', [PackageController::class, 'choosePackage']);
 
+
+        //Home
+        Route::get('/', [HomeController::class, 'index']);
+
+        //Categories
+        Route::get('cats', [CatController::class, 'index']);
+        Route::get('cats/show/{id}', [CatController::class, 'show']);
+
+        //Designs
+        Route::get('designs', [DesignController::class, 'index']);
+        Route::get('designs/show/{id}', [DesignController::class, 'show']);
+        Route::get('designs/offers', [DesignController::class, 'getOffers']);
         //Add rate for design
         Route::post('designs/add-rate/{design}', [DesignController::class, 'addRate']);
+
+        //choose package
+        Route::post('/packages/choose-package/{package}', [PackageController::class, 'choosePackage']);
 
         //ready order
         Route::post('order/ready/{design}', [OrderController::class, 'ready']);
@@ -84,12 +78,11 @@ Route::middleware('lang')->group(function () {
         //show my order
         Route::get('orders/show', [OrderController::class, 'showMyOrder']);
 
-
+        //Competitions
+        Route::get('competitions', [CompetitionController::class, 'index']);
+        Route::get('competitions/show/{id}', [CompetitionController::class, 'show']);
+        Route::get('competitions/designs', [CompetitionController::class, 'getAllCompetitionDesigns']);
+        //add rate competitions
         Route::post('competitions/designs/add-rate/{competitionDesign}', [CompetitionController::class, 'addRate']);
-
     });
-
-
-
-
 });

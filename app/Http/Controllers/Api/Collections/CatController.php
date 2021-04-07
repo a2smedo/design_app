@@ -13,7 +13,7 @@ class CatController extends Controller
 {
     public function index()
     {
-        $cats = CatResource::collection(Cat::get());
+        $cats = CatResource::collection(Cat::active()->get());
 
         if ($cats->isEmpty()) {
             return callback_data(401, 'no_data');
@@ -24,7 +24,7 @@ class CatController extends Controller
 
     public function show(Request $request)
     {
-        $cat = Cat::with('designs')->find($request->id);
+        $cat = Cat::active()->with('designs')->find($request->id);
 
         if (! $cat) {
             return callback_data(401, 'no_data');

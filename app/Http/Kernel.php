@@ -65,5 +65,8 @@ class Kernel extends HttpKernel
 
 
         'lang' => \App\Http\Middleware\ApiLang::class,
+        'enterDashboard' => \App\Http\Middleware\canEnterDashboard::class,
+        'isSuperAdmin' => \App\Http\Middleware\isSuperAdmin::class,
+        'isAdmin' => \App\Http\Middleware\isAdmin::class,
     ];
 }

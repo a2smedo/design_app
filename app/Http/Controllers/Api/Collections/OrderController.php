@@ -74,7 +74,8 @@ class OrderController extends Controller
     public function showMyOrder(Request $request)
     {
         $user = $request->user();
-        $orders =   OrderResource::collection(Order::where('user_id', $user->id)->get());
+        $orders =   OrderResource::collection(Order::where('user_id', $user->id)
+        ->orderBy('id', 'DESC')->get());
 
         if ($orders->isEmpty()) {
             return callback_data(401, 'no_orders');

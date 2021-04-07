@@ -22,7 +22,7 @@ class DesignimgFactory extends Factory
     public function definition()
     {
         return [
-            'img' => $this->faker->sentence(3),
+            'img' => 'designs/sub_design.jpg',
         ];
     }
 }

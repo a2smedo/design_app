@@ -26,7 +26,8 @@ class CatFactory extends Factory
                 'en' => $this->faker->word(),
                 'ar' => $this->faker->word(),
             ]) ,
-            'img' => $this->faker->sentence(3)
+            'img' => 'cats/cat.jpg',
+            
         ];
     }
 }

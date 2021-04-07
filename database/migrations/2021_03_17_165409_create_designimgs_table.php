@@ -17,6 +17,7 @@ class CreateDesignimgsTable extends Migration
             $table->id();
             $table->foreignId('design_id')->constrained()->onDelete('cascade');
             $table->string('img', 255);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class CreateCatsTable extends Migration
             $table->id();
             $table->text('name');
             $table->string('img', 255)->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
