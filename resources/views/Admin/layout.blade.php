@@ -298,7 +298,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               $('#noti').text(0);
               $('.noti').text("No notifications");
               $('.n-link', '.div-noti').hide();
-            }, 3000);
+            }, 5000);
 
 
           }

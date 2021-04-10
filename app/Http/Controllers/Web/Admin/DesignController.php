@@ -49,7 +49,7 @@ class DesignController extends Controller
             'descEn' => 'required|string',
             'descAr' => 'required|string',
             'price' => 'required|numeric|min:1',
-            'discount' => 'required|numeric|min:1',
+            'discount' => 'numeric',
             'langEn' => 'required|string|min:3|max:60',
             'langAr' => 'required|string|min:3|max:60',
             'fontEn' => 'required|string|min:3|max:60',
@@ -125,7 +125,7 @@ class DesignController extends Controller
             'descEn' => 'required|string',
             'descAr' => 'required|string',
             'price' => 'required|numeric|min:1',
-            'discount' => 'required|numeric|min:1',
+            'discount' => 'numeric',
             'langEn' => 'required|string|min:3|max:60',
             'langAr' => 'required|string|min:3|max:60',
             'fontEn' => 'required|string|min:3|max:60',
@@ -214,6 +214,7 @@ class DesignController extends Controller
         $design->update([
             'active' => !$design->active
         ]);
+
         return back();
     }
 

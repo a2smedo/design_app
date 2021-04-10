@@ -121,7 +121,7 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="name"> Discount </label>
-                <input type="number" name="discount" class="form-control" id="" min="1" step=".01" required>
+                <input type="number" name="discount" class="form-control" id=""  step=".01" value="0">
               </div>
             </div>
 

@@ -116,7 +116,7 @@
     $(document).ready(function() {
 
       $(function() {
-        $('#expired_at').datetimepicker({
+        $('#started_at,#expired_at').datetimepicker({
           //format: 'Y-M-D h:m:s'
           format: 'YYYY/MM/DD/ h:m:s',
           minDate: getFormattedDate(new Date())
@@ -132,6 +132,7 @@
         }
 
       });
+
 
 
 

@@ -133,8 +133,8 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="name"> Discount </label>
-                <input type="number" name="discount" class="form-control" id="" min="1" step=".01"
-                  value="{{ $design->discount }}" required>
+                <input type="number" name="discount" class="form-control"  step=".01"
+                  value="{{ $design->discount }}" >
               </div>
             </div>
 

@@ -21,7 +21,7 @@ class CreateDesignsTable extends Migration
             $table->string('main_img', 255)->nullable();
             $table->text('desc');
             $table->decimal('price', 10,2);
-            $table->decimal('discount', 5,2);
+            $table->decimal('discount', 5,2)->default(0.00);
             $table->string('lang', 255);
             $table->string('background', 255)->nullable();
             $table->string('font', 255)->nullable();

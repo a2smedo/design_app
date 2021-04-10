@@ -33,7 +33,7 @@
         @foreach ($notifications as $noti)
 
           <div class="dropdown-divider"></div>
-          @if ($noti->is_read == 0)
+
             @if ($noti->type == 'order')
               <a href="{{ url('/dashboard/orders') }}" class="dropdown-item n-link">
                 <i class="fas fa-envelope mr-2"></i>
@@ -59,7 +59,7 @@
               </a>
             @endif
 
-          @endif
+        
 
           <div class="dropdown-divider"></div>
         @endforeach

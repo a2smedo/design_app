@@ -48,7 +48,8 @@
 
             <div class="card-tools">
               <div class="card-tools">
-                <a href="{{ url('/dashboard/designs/create') }}" class="btn btn-primary btn-sm" title="Add new Design">Add new</a>
+                <a href="{{ url('/dashboard/designs/create') }}" class="btn btn-primary btn-sm"
+                  title="Add new Design">Add new</a>
               </div>
             </div>
           </div>
@@ -103,24 +104,29 @@
 
 
                   <td>
-                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/designs/show/{$design->id}") }} " title="Show Design">
+                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/designs/show/{$design->id}") }} "
+                      title="Show Design">
                       <i class="fas fa-eye"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-warning" href=" {{ url("/dashboard/designs/edit/{$design->id}") }} " title="Edit Design">
+                    <a class="btn btn-sm btn-warning" href=" {{ url("/dashboard/designs/edit/{$design->id}") }} "
+                      title="Edit Design">
                       <i class="fas fa-edit"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/designs/delete/{$design->id}") }} " title="Delete Design" onclick="return confirm('Are you sure?')">
+                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/designs/delete/{$design->id}") }} "
+                      title="Delete Design" onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/designs/toggle/{$design->id}") }} " title="Open or Colsed Status">
+                    <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/designs/toggle/{$design->id}") }} "
+                      title="Open or Colsed Status" id="toggle" >
                       <i class="fas fa-toggle-on"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/designs/slider/{$design->id}") }} " title="Make this Design Slider">
-                        <i class="fas fa-sliders-h"></i>
+                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/designs/slider/{$design->id}") }} "
+                      title="Make this Design Slider">
+                      <i class="fas fa-sliders-h"></i>
                     </a>
 
                   </td>
@@ -144,3 +150,6 @@
 
 
 @endsection
+
+
+
