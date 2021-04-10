@@ -79,7 +79,19 @@ class CompetitionController extends Controller
             'expired_at' => 'required'
         ]);
 
-        $competition->update($data);
+        $competition->update([
+            'name' => json_encode([
+                'en' => $request->nameEn,
+                'ar' => $request->nameAr,
+            ]),
+            'desc' => json_encode([
+                'en' => $request->descEn,
+                'ar' => $request->descAr,
+            ]),
+
+            'started_at' => $request->started_at,
+            'expired_at' => $request->expired_at,
+        ]);
 
         $request->session()->flash('msgUpdate', 'Row Updated Successfly');
 

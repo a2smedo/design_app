@@ -10,6 +10,7 @@ class SendController extends Controller
 {
     public function create()
     {
+        
         $data['users'] = User::where('rule_id', 3)->get();
         return view('Admin.notifications.send')->with($data);
     }

@@ -71,7 +71,7 @@
               <div class="form-group">
                 <label for="started_at"> Started at </label>
                 <input type="text" name="started_at" class="form-control" id="started_at"
-                  value="{{ $competition->started_at }}" readonly>
+                  value="{{ $competition->started_at }}">
               </div>
             </div>
 
