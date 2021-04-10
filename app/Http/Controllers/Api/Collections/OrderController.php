@@ -42,7 +42,7 @@ class OrderController extends Controller
         ]);
         $code = verification_code();
 
-        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+//        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
         return callback_data(200, 'order_created');
     }
 
@@ -81,7 +81,7 @@ class OrderController extends Controller
         ]);
 
         $code = verification_code();
-       Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+//       Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
         return callback_data(200, 'order_created');
     }
 

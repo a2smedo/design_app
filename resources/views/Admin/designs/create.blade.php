@@ -27,7 +27,7 @@
               <div class="form-group">
                 <label> Category </label>
                 <select class="custom-select form-control" name="cat_id" required>
-                  <option disabled selected>Choese Category </option>
+                  <option disabled selected value="">Choose Category </option>
                   @foreach ($cats as $cat)
                     <option value="{{ $cat->id }}"> {{ $cat->name('en') }} </option>
                   @endforeach
@@ -39,7 +39,7 @@
               <div class="form-group">
                 <label> Design Type </label>
                 <select class="custom-select form-control" name="type" required>
-                  <option disabled selected>Choese Design type </option>
+                  <option disabled selected value="">Choese Design type </option>
                   <option value="0"> Free </option>
                   <option value="1"> Paid </option>
                 </select>

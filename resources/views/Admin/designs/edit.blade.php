@@ -28,7 +28,7 @@
               <div class="form-group">
                 <label> Category </label>
                 <select class="custom-select form-control" name="cat_id" required>
-                  <option disabled selected>Choese Category </option>
+                  <option disabled selected value="">Choese Category </option>
                   @foreach ($cats as $cat)
                     <option value="{{ $cat->id }}" @if ($design->cat_id == $cat->id) selected @endif> {{ $cat->name('en') }} && {{ $cat->name('ar') }}
                     </option>
@@ -41,7 +41,7 @@
               <div class="form-group">
                 <label> Design Type </label>
                 <select class="custom-select form-control" name="type" required>
-                  <option disabled selected>Choese Design type </option>
+                  <option disabled selected value="">Choese Design type </option>
 
                   <option value="0" @if ($design->type == 0 )
                     selected
