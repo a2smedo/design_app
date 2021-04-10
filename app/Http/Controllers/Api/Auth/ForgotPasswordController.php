@@ -41,7 +41,7 @@ class ForgotPasswordController extends Controller
                 'email' => $email,
                 'token' => $code
             ]);
-//            Mail::to($email)->send(new ForgotPassword(['code' => $code]));
+          Mail::to($email)->send(new ForgotPassword(['code' => $code]));
             return callback_data(200, 'check_email');
 
         } catch (\Exception $e) {

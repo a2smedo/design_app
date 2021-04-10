@@ -23,8 +23,8 @@ function not_active()
 
 function verification_code()
 {
-    $code = mt_rand(1000, 9999);
-    //$code = 1111;
+    //$code = mt_rand(1000, 9999);
+    $code = 1111;
     return $code;
 }
 

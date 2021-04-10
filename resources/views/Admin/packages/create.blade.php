@@ -27,14 +27,14 @@
 
             <div class="col">
               <div class="form-group">
-                <label for="name">Package Name </label>
-                <input type="text" class="form-control" name="nameEn">
+                <label for="name">Package Name(En) </label>
+                <input type="text" class="form-control" name="nameEn" required minlength="2" maxlength="100">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="name" class="float-right"> أسم الباقة </label>
-                <input type="text" class="form-control text-right" name="nameAr">
+                <label for="name" class="float-right"> (ع)أسم الباقة </label>
+                <input type="text" class="form-control text-right" name="nameAr" required minlength="2" maxlength="100">
               </div>
             </div>
 
@@ -46,7 +46,7 @@
             <div class="col">
                 <div class="form-group">
                   <label > Price</label>
-                  <input type="number" class="form-control" name="price" min="1" step=".01">
+                  <input type="number" class="form-control" name="price" min="1" step=".01" required>
                 </div>
               </div>
           </div>
@@ -56,15 +56,15 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="name">Package Description </label>
-                <textarea name="descEn" class="form-control" rows="3"></textarea>
+                <label for="name">Package Description (En) </label>
+                <textarea name="descEn" class="form-control" rows="3" required minlength="2" maxlength="5000"></textarea>
               </div>
             </div>
 
             <div class="col">
               <div class="form-group">
-                <label class="float-right" for="name"> وصف الباقة </label>
-                <textarea name="descAr" class="form-control text-right" rows="3"></textarea>
+                <label class="float-right" for="name"> (ع)وصف الباقة </label>
+                <textarea name="descAr" class="form-control text-right" rows="3" required min="2" maxlength="5000"></textarea>
               </div>
             </div>
           </div>

@@ -16,9 +16,9 @@ class CompetitionDesignsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'name' => $this->name(),
             'img' => $this->img,
-            'desc' => $this->desc,
+            'desc' => $this->desc(),
             'rate' => $this->rate,
         ];
     }

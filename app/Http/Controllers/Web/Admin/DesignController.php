@@ -41,6 +41,7 @@ class DesignController extends Controller
     {
         $request->validate([
             'cat_id' => 'required|exists:cats,id',
+            'type' => 'required',
             'nameEn' => 'required|string|min:3|max:60',
             'nameAr' => 'required|string|min:3|max:60',
             'main_img' => 'required|image|max:2048',
@@ -64,6 +65,7 @@ class DesignController extends Controller
 
         $design = Design::create([
             'cat_id' => $request->cat_id,
+            'type' => $request->type,
             'name' => json_encode([
                 'en' => $request->nameEn,
                 'ar' => $request->nameAr,
@@ -92,7 +94,7 @@ class DesignController extends Controller
                 'en' => $request->detailsEn,
                 'ar' => $request->detailsAr,
             ]),
-            'rate' => 0, 0,
+            'rate' => 0,
             'active' => 0
         ]);
 
@@ -115,6 +117,7 @@ class DesignController extends Controller
     {
         $request->validate([
             'cat_id' => 'required|exists:cats,id',
+            'type' => 'required',
             'nameEn' => 'required|string|min:3|max:60',
             'nameAr' => 'required|string|min:3|max:60',
             'main_img' => 'nullable|image|max:2048',
@@ -147,7 +150,7 @@ class DesignController extends Controller
 
         $design->update([
             'cat_id' => $request->cat_id,
-
+            'type' => $request->type,
             'name' => json_encode([
                 'en' => $request->nameEn,
                 'ar' => $request->nameAr,

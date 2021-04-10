@@ -79,7 +79,7 @@
 
             <div class="card-tools">
               <div class="card-tools">
-                <a href="{{url("dashboard/designs/sub-imgs-create/{$design->id}")}}" class="btn btn-primary">Add new image</a>
+                <a href="{{url("dashboard/designs/sub-imgs-create/{$design->id}")}}" class="btn btn-primary" title="Add new Image" >Add new image</a>
               </div>
             </div>
           </div>
@@ -116,16 +116,16 @@
                   <td>
 
                     <a class="btn btn-sm btn-warning"
-                      href=" {{ url("/dashboard/designs/sub-imgs-edit/{$design->id}/{$d_img->id}") }} ">
+                      href=" {{ url("/dashboard/designs/sub-imgs-edit/{$design->id}/{$d_img->id}") }} "  title="Edit Image">
                       <i class="fas fa-edit"></i>
                     </a>
 
                     <a class="btn btn-sm btn-danger"
-                      href=" {{ url("/dashboard/designs/sub-imgs-delete/{$design->id}/{$d_img->id}") }} ">
+                      href=" {{ url("/dashboard/designs/sub-imgs-delete/{$design->id}/{$d_img->id}") }} "  title="Delete Image" onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/designs/sub-imgs-toggle/{$design->id}/{$d_img->id}") }} ">
+                    <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/designs/sub-imgs-toggle/{$design->id}/{$d_img->id}") }} "  title="Open or Closed status">
                         <i class="fas fa-toggle-on"></i>
                       </a>
 

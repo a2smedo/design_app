@@ -37,6 +37,15 @@
                     {{ $design->cat->name('en') }}
                   </td>
                 </tr>
+
+                <tr>
+                  <th>Design Type</th>
+                  @if ($design->type != 0)
+                  <td>Paid</td>
+                  @else
+                  <td>Free</td>
+                  @endif
+                </tr>
                 <tr>
                   <th>Name (en)</th>
                   <td>

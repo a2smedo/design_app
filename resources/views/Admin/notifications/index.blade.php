@@ -1,13 +1,14 @@
 @extends('admin.layout')
 @section('title')
-Orders
+  Notifications
 @endsection
 
 @section('head')
-Orders
+  Notifications
 @endsection
+
 @section('li')
-<a href="{{url('/dashboard/orders')}}">Orders</a>
+  <a href="{{ url('/dashboard/orders') }}">Orders</a>
 @endsection
 
 
@@ -47,7 +48,7 @@ Orders
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title"> All Orders </h3>
+            <h3 class="card-title"> All Notifications </h3>
           </div>
         </div>
 
@@ -58,66 +59,46 @@ Orders
             <thead>
               <tr>
                 <th>ID</th>
-                <th>User Name</th>
-                <th>Email</th>
-                <th>Phone </th>
-                <th>Status </th>
-                <th>Order Date </th>
+                <th>Title</th>
+                <th>Message</th>
+                <th>Type </th>
+                <th>Notifications Date </th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-            @forelse ($orders as $order)
+              @forelse ($notifications as $notific)
 
                 <tr id="tr">
                   <td> {{ $loop->iteration }} </td>
 
-                  <td> {{ $order->user->name }} </td>
-                  <td> {{ $order->user->email }} </td>
-                  <td> {{ $order->user->phone }} </td>
-
+                  <td> {{ $notific->title }} </td>
+                  <td> {{ $notific->message }} </td>
                   <td>
-                    @if ($order->status == 'pending')
-                      <span class="badge badge-warning"> {{ $order->status }}</span>
-
-                    @elseif($order->status == 'accepted')
-                      <span class="badge badge-secondary"> {{ $order->status }}</span>
-
-                    @elseif($order->status == 'completed')
-                      <span class="badge badge-success"> {{ $order->status }}</span>
-
+                    @if ($notific->type == 'order')
+                      <span class="badge badge-success"> {{ $notific->type }}</span>
                     @else
-                      <span class="badge badge-danger"> {{ $order->status }}</span>
-
+                      <span class="badge badge-warning"> {{ $notific->type }}</span>
                     @endif
+
                   </td>
-
-
-
-                  <td> {{ $order->created_at }} </td>
-
+                  <td> {{ $notific->created_at }} </td>
 
 
                   <td>
-                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/orders/show/{$order->id}") }} " title="Show Order">
-                      Show
-                      <i class="fas fa-eye"></i>
-                    </a>
-
-                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/orders/delete/{$order->id}") }} " title="Delete Order" onclick="return confirm('Are you sure?')">
+                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/notifications/delete/{$notific->id}") }} " title="Delete Notification" onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
-
                   </td>
                 </tr>
               @empty
-                  <p> No Orders found </p>
-            @endforelse
+                <p> No Notifications found </p>
+              @endforelse
             </tbody>
           </table>
 
           <div class="d-flex justify-content-center py-2 my-2">
-            {{ $orders->links() }}
+            {{ $notifications->links() }}
           </div>
         </div>
 
@@ -134,9 +115,9 @@ Orders
 
 @section('Script')
 
-  <script>
+<script>
 
 
-  </script>
+</script>
 
 @endsection

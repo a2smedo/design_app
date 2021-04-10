@@ -28,14 +28,14 @@
 
             <div class="col">
               <div class="form-group">
-                <label for="name">Design Name </label>
-                <input type="text" class="form-control" name="nameEn">
+                <label for="name">Design Name (En) </label>
+                <input type="text" class="form-control" name="nameEn" required minlength="2" maxlength="100">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="name" class="float-right"> أسم التصميم </label>
-                <input type="text" class="form-control text-right" name="nameAr">
+                <label for="name" class="float-right">(ع) أسم التصميم </label>
+                <input type="text" class="form-control text-right" name="nameAr" required minlength="2" maxlength="100">
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
                 <label for="exampleInputFile">Design Image</label>
                 <div class="input-group">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="img">
+                    <input type="file" class="custom-file-input" name="img" required accept="image/*">
                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                   </div>
                 </div>
@@ -60,15 +60,15 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="name">Desgin Description </label>
-                <textarea name="descEn" class="form-control" rows="3"></textarea>
+                <label for="name">Desgin Description (En)</label>
+                <textarea name="descEn" class="form-control" rows="3" required minlength="2" maxlength="5000"></textarea>
               </div>
             </div>
 
             <div class="col">
               <div class="form-group">
-                <label class="float-right" for="name"> وصف التصميم </label>
-                <textarea name="descAr" class="form-control text-right" rows="3"></textarea>
+                <label class="float-right" for="name">(ع) وصف التصميم </label>
+                <textarea name="descAr" class="form-control text-right" rows="3" required minlength="2" maxlength="5000"></textarea>
               </div>
             </div>
           </div>

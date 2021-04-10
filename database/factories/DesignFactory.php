@@ -60,7 +60,8 @@ class DesignFactory extends Factory
                 'ar' => $this->faker->text(50),
             ]),
             'rate' => 0,
-            
+            'type' => $this->faker->numberBetween(0,1)
+
 
         ];
     }

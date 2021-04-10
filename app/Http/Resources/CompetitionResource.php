@@ -18,7 +18,9 @@ class CompetitionResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name(),
             'desc' => $this->desc(),
-            'competition_designs' => CompetitionDesignsResource::collection($this->whenLoaded('competition_designs')),
+
+            'competitionDesigns' => CompetitionDesignsResource::collection($this->whenLoaded('competitionDesigns')),
+            'started_at' => $this->started_at,
             'expired_at' => $this->expired_at,
         ];
     }

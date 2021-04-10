@@ -91,7 +91,7 @@
                   </td>
 
                   <td>
-                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/users/delete/$user->id") }} ">
+                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/users/delete/$user->id") }} " title="Delete User " onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
                   </td>

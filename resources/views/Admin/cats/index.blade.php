@@ -37,6 +37,12 @@
     </div>
 
     <div class="row">
+        <div class="col">
+            @include('admin.inc.errors')
+        </div>
+    </div>
+
+    <div class="row">
       <div class="col">
 
         <div class="card">
@@ -44,7 +50,7 @@
             <h3 class="card-title"> All Categories </h3>
 
             <div class="card-tools">
-              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addModal">
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addModal" title="Add new Category">
                 Add new
               </button>
             </div>
@@ -65,7 +71,6 @@
             </thead>
             <tbody>
               @foreach ($cats as $cat)
-
                 <tr>
                   <td> {{ $loop->iteration }} </td>
                   <td> {{ $cat->name('en') }} </td>
@@ -90,15 +95,16 @@
 
                     <button type="button" class="btn btn-sm btn-warning editBtn" data-toggle="modal"
                       data-target="#editModal" data-id=" {{ $cat->id }} " data-name-en="{{ $cat->name('en') }}"
-                      data-name-ar="{{ $cat->name('ar') }}">
+                      data-name-ar="{{ $cat->name('ar') }}"
+                      title="Edit Category">
                       <i class="fas fa-edit"></i>
                     </button>
 
-                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/cats/delete/{$cat->id}") }} ">
+                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/cats/delete/{$cat->id}") }} " title="Delete Category" onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/cats/toggle/{$cat->id}") }} ">
+                    <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/cats/toggle/{$cat->id}") }} " title="Open or Closed Status">
                       <i class="fas fa-toggle-on"></i>
                     </a>
 
@@ -133,19 +139,18 @@
           </button>
         </div>
         <div class="modal-body">
-          @include('admin.inc.errors')
 
           <form id="addForm" method="POST" action=" {{ url('/dashboard/cats/store') }} " enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
-              <label for="name">Category Name </label>
-              <input type="text" class="form-control" name="nameEn">
+              <label for="name">Category Name (En) </label>
+              <input type="text" class="form-control" name="nameEn" required minlength="2" maxlength="100">
             </div>
 
             <div class="form-group">
-              <label for="name" class="float-right"> أسم القسم </label>
-              <input type="text" class="form-control text-right" name="nameAr">
+              <label for="name" class="float-right">(ع) أسم القسم </label>
+              <input type="text" class="form-control text-right" name="nameAr" required minlength="2" maxlength="100">
             </div>
 
             <div class="row">
@@ -154,7 +159,7 @@
                   <label for="exampleInputFile">Image</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="img">
+                      <input type="file" class="custom-file-input" name="img" required  accept="image/*">
                       <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                     </div>
                   </div>
@@ -185,7 +190,7 @@
           </button>
         </div>
         <div class="modal-body">
-          @include('admin.inc.errors')
+
 
           <form id="editForm" method="POST" action=" {{ url('/dashboard/cats/update') }} "
             enctype="multipart/form-data">
@@ -193,13 +198,13 @@
             <input type="hidden" name="id" id="editId">
 
             <div class="form-group">
-              <label for="name">Category Name </label>
-              <input type="text" class="form-control" name="nameEn" id="nameEn">
+              <label for="name">Category Name (En) </label>
+              <input type="text" class="form-control" name="nameEn" id="nameEn" required minlength="2" maxlength="100">
             </div>
 
             <div class="form-group">
-              <label for="name" class="float-right"> أسم القسم </label>
-              <input type="text" class="form-control text-right" name="nameAr" id="nameAr">
+              <label for="name" class="float-right">(ع) أسم القسم </label>
+              <input type="text" class="form-control text-right" name="nameAr" id="nameAr" required minlength="2" maxlength="100">
             </div>
 
             <div class="row">
@@ -208,7 +213,7 @@
                   <label for="exampleInputFile">Image</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="img">
+                      <input type="file" class="custom-file-input" name="img"   accept="image/*">
                       <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                     </div>
                   </div>

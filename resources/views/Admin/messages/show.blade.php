@@ -91,12 +91,12 @@
 
             <div class="form-group">
               <label for="title">Subject</label>
-              <input id="title" class="form-control" type="text" name="subject">
+              <input id="title" class="form-control" type="text" name="subject" required minlength="2" maxlength="200" placeholder="Subject">
             </div>
 
             <div class="form-group">
               <label for="body">Message</label>
-              <textarea id="body" class="form-control" name="message" rows="3"></textarea>
+              <textarea id="body" class="form-control" name="message" rows="3" required minlength="2" maxlength="5000" placeholder="Message"></textarea>
             </div>
 
             <div class="row pb-3">

@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\Admin\DesignController;
 use App\Http\Controllers\Web\Admin\MessageController;
 use App\Http\Controllers\Web\Admin\PackageController;
 use App\Http\Controllers\Web\Admin\CompetitionController;
+use App\Http\Controllers\Web\Admin\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +121,9 @@ Route::prefix('dashboard')->middleware(['auth', 'enterDashboard'])->group(functi
     Route::get('/messages/show/{contact}', [MessageController::class, 'show']);
     Route::post('/messages/response/{contact}', [MessageController::class, 'response']);
 
+    //Notifications
+    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notifications/delete/{notification}', [NotificationController::class, 'delete']);
 
 
 

@@ -78,7 +78,7 @@ class User extends Authenticatable
 
     public function competitiondesigns()
     {
-        return $this->belongsToMany(CompetitionDesign::class, 'competitiondesign_user', 'user_id', 'competitiondesign_id')
+        return $this->belongsToMany(CompetitionDesign::class, 'competition_design_user', 'user_id', 'competition_design_id')
             ->withPivot('rate')
             ->withTimestamps();
     }

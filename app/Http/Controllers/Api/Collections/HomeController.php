@@ -19,8 +19,11 @@ class HomeController extends Controller
        $design_sliders = DesignResource::collection(
            Design::where('slider', 'used')->orderBy('id', 'DESC')->active()->get()
         );
+
+
+        
        $offers = DesignResource::collection(
-           Design::where('discount', '!=', '0')->orderBy('id', 'DESC')->active()->get()
+           Design::where('type', '=', '1')->orderBy('id', 'DESC')->active()->get()
         );
 
        return callback_data(200 ,'home' , [
@@ -31,7 +34,7 @@ class HomeController extends Controller
        ]);
     }
 
-    
+
 
 
 

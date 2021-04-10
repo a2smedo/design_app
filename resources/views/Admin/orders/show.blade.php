@@ -112,20 +112,36 @@
                     $total = $price - $discount;
                   @endphp
 
-                  Total : {{ $total }} EGP
+                  Total : {{ number_format($total, '2') }} EGP
                 </p>
 
                 <p>
-                  <a href="{{ url("/dashboard/orders/accepted/{$order->id}") }}" class="btn btn-sm btn-primary">
-                    Accepted </a>
-                  <a href="{{ url("/dashboard/orders/completed/{$order->id}") }}" class="btn btn-sm btn-success">
-                    Completed </a>
 
-                  <a href="{{ url("/dashboard/orders/canceled/{$order->id}") }}" class="btn btn-sm btn-danger"
-                    id="cancel">
-                    Cancel
-                    <i class="fas fa-times"></i>
-                  </a>
+
+                  @if ($order->status == 'pending')
+
+                    <a href="{{ url("/dashboard/orders/accepted/{$order->id}") }}" class="btn btn-sm btn-primary" title="Accepted this Order">
+                      Accepted </a>
+
+                    <a href="{{ url("/dashboard/orders/canceled/{$order->id}") }}" class="btn btn-sm btn-danger"
+                      id="cancel" title="Canceled this Order">
+                      Cancel
+                      <i class="fas fa-times"></i>
+                    </a>
+                  @endif
+
+                  @if ($order->status == 'accepted')
+                    <a href="{{ url("/dashboard/orders/completed/{$order->id}") }}" class="btn btn-sm btn-success" title="Completed this Order">
+                      Completed </a>
+                  @endif
+
+                  @if ($order->status == 'completed')
+                    <div class="text-muted"> This order has been completed. </div>
+                  @endif
+
+                  @if ($order->status == 'canceled')
+                    <div class="text-muted"> This order has been canceled. </div>
+                  @endif
 
                 </p>
               </div>

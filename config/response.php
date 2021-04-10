@@ -59,6 +59,12 @@ return
             'en' => 'Email already exists',
         ],
 
+        'email_already_activate' =>
+        [
+            'ar' => 'البريد الإلكتروني قد تم تفعيله سابقا',
+            'en' => 'Email already activated',
+        ],
+
         'check_email' => [
             'ar' => 'تم إرسال الكود خاص , برجاء التحقق من  البريد الالكنروني ',
             'en' => 'Your code has been sent, Please check your email address'
@@ -451,6 +457,10 @@ return
             'en' => 'All competitions',
         ],
 
+        'competition' => [
+            'ar' => 'المسابقة',
+            'en' => 'competition',
+        ],
 
         'offers' =>
         [

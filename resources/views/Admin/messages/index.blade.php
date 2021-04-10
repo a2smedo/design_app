@@ -56,7 +56,7 @@
 
 
                   <td>
-                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/messages/show/$msg->id") }} ">
+                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/messages/show/$msg->id") }} " title="Show Message">
                       <i class="fas fa-eye"></i>
                     </a>
                   </td>

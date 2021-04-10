@@ -47,7 +47,7 @@
             <h3 class="card-title"> All Admins </h3>
 
             <div class="card-tools">
-              <a class="btn btn-sm btn-primary" href=" {{ url('/dashboard/admins/create') }} ">Add Admin</a>
+              <a class="btn btn-sm btn-primary" href=" {{ url('/dashboard/admins/create') }} " title="Add new Admin">Add Admin</a>
             </div>
           </div>
         </div>
@@ -89,16 +89,16 @@
 
                       @if ($admin->rule->name == 'admin')
 
-                        <a class="btn btn-sm btn-success" href=" {{ url("/dashboard/admins/promot/$admin->id") }} ">
+                        <a class="btn btn-sm btn-success" href=" {{ url("/dashboard/admins/promot/$admin->id") }} " title="Upgrade this Admin">
                           <i class="fas fa-level-up-alt"></i>
                         </a>
                       @else
-                        <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/admins/demot/$admin->id") }} ">
+                        <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/admins/demot/$admin->id") }} " title="Degrade this Admin">
                           <i class="fas fa-level-down-alt"></i>
                         </a>
                       @endif
 
-                      <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/admins/delete/{$admin->id}") }} ">
+                      <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/admins/delete/{$admin->id}") }} " title="Delete Admin" onclick="return confirm('Are you sure?')">
                         <i class="fas fa-trash"></i>
                       </a>
 

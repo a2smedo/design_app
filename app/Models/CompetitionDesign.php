@@ -18,7 +18,7 @@ class CompetitionDesign extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'competitiondesign_user', 'competitiondesign_id', 'user_id')
+        return $this->belongsToMany(User::class,'competitiondesign_user', 'competition_design_id', 'user_id')
             ->withPivot('rate')
             ->withTimestamps();
     }

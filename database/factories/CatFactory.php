@@ -27,7 +27,7 @@ class CatFactory extends Factory
                 'ar' => $this->faker->word(),
             ]) ,
             'img' => 'cats/cat.jpg',
-            
+
         ];
     }
 }

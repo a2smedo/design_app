@@ -74,7 +74,7 @@
             <h3 class="card-title"> Competition Designs </h3>
 
             <div class="card-tools">
-              <a href="{{ url("/dashboard/competitions/create/designs/$competition->id") }}" class="btn btn-primary btn-sm">Add new</a>
+              <a href="{{ url("/dashboard/competitions/create/designs/$competition->id") }}" class="btn btn-primary btn-sm" title="Add new Design">Add new</a>
             </div>
           </div>
         </div>
@@ -120,18 +120,18 @@
 
                     <td>
                       <a class="btn btn-sm btn-info"
-                        href=" {{ url("/dashboard/competitions/show/designs/{$competition->id}/{$comp_d->id}") }} ">
+                        href=" {{ url("/dashboard/competitions/show/designs/{$competition->id}/{$comp_d->id}") }} " title="Show Design">
                         <i class="fas fa-eye"></i>
                       </a>
 
-                       <a class="btn btn-sm btn-warning" href=" {{ url("/dashboard/competitions/edit/designs/{$competition->id}/{$comp_d->id}") }} ">
+                       <a class="btn btn-sm btn-warning" href=" {{ url("/dashboard/competitions/edit/designs/{$competition->id}/{$comp_d->id}") }} " title="Edit Design">
                           <i class="fas fa-edit"></i>
                         </a>
-                        <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/competitions/delete/designs/{$comp_d->id}") }} ">
+                        <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/competitions/delete/designs/{$comp_d->id}") }} " title="Delete Design" onclick="return confirm('Are you sure?')">
                             <i class="fas fa-trash"></i>
                         </a>
 
-                        <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/competitions/toggle/designs/{$comp_d->id}") }} ">
+                        <a class="btn btn-sm btn-secondary" href=" {{ url("/dashboard/competitions/toggle/designs/{$comp_d->id}") }} " title="Open or Closed status">
                             <i class="fas fa-toggle-on"></i>
                         </a>
 

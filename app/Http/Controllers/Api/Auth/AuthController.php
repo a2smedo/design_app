@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Rule;
 use App\Models\User;
 use App\Mail\ActivationMail;
+use App\Models\Notification;
 use App\Models\Verification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,7 +34,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             $errors = $validator->errors()->toArray();
-            // dd($errors['email']);
+
             if (isset($errors['name'][0])) {
                 return callback_data(401, 'name_required', []);
             }
@@ -86,7 +87,14 @@ class AuthController extends Controller
                 'expired_at' => Carbon::now()->addHour()
             ]);
 
-//           Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+            Notification::create([
+                'title' => $user->name,
+                'message' => 'new user register',
+                'type' => 'user',
+
+            ]);
+
+            Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
             return callback_data(200, 'registered', $user);
         } else {
             return callback_data(401, 'user_not_found');
@@ -103,11 +111,10 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-
         if ($validator->fails()) {
             $errors = $validator->errors()->toArray();
             if (isset($errors['email'][0])) {
-                return callback_data(401, 'email_required', []);
+                return callback_data(401, 'email_not_found', []);
             }
             if (isset($errors['password'][0])) {
                 return callback_data(401, 'password_required', []);
@@ -128,7 +135,7 @@ class AuthController extends Controller
                     'expired_at' => Carbon::now()->addHour()
                 ]);
                 $code = verification_code();
-//                Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+                Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
                 return callback_data(402, 'user_not_activated');
             }
 
@@ -142,7 +149,7 @@ class AuthController extends Controller
     public function sendCode(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            'email' => 'required|exists:users,email',
         ]);
 
         if ($validator->fails()) {
@@ -153,7 +160,9 @@ class AuthController extends Controller
             }
         }
 
+
         $emails = User::pluck('email')->toArray();
+
         if (!in_array($request->email, $emails)) {
             return callback_data(401, 'email_not_found');
         }
@@ -161,36 +170,37 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
         $code = verification_code();
 
-        if ($user->status != 1) {
-
-            Verification::create([
-                'email' => $request->email,
-                'code' => verification_code(),
-                'expired_at' => Carbon::now()->addHour()
-            ]);
-
-//            Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
-            return callback_data(200, 'code_sent');
-        }
-
-        $emails_check = Verification::pluck('email')->toArray();
-
-        if (!in_array($request->email, $emails_check)) {
-            Verification::create([
-                'email' => $request->email,
-                'code' => verification_code(),
-                'expired_at' => Carbon::now()->addHour()
-            ]);
+        if ($user->status == 1) {
+            return callback_data(200, 'email_already_activate');
         } else {
-            $verification = Verification::where('email', $request->email)->first();
-            $verification->code = $code;
-            $verification->expired_at = Carbon::now()->addHour();
-            $verification->save();
+
+            $emails_check = Verification::pluck('email')->toArray();
+
+            if (!in_array($request->email, $emails_check)) {
+                Verification::create([
+                    'email' => $request->email,
+                    'code' => $code,
+                    'expired_at' => Carbon::now()->addHour()
+                ]);
+            } else {
+
+                if ($request->email == $emails_check[0]) {
+
+                    $verification = Verification::where('email', $request->email)->first();
+
+                    $verification->update([
+                        'code' => $code,
+                        'expired_at' => Carbon::now()->addHour()
+                    ]);
+                }
+            }
         }
 
-//        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
         return callback_data(200, 'code_sent');
     }
+
+
 
     // Verify email
     public function verify(Request $request)
@@ -225,6 +235,8 @@ class AuthController extends Controller
                 $user->save();
                 $verified->delete();
 
+                $token = $user->createToken('token')->accessToken;
+                $user->token = $token;
                 return callback_data(200, 'activated', $user);
             } else {
                 return callback_data(401, 'user_not_found');
@@ -238,26 +250,25 @@ class AuthController extends Controller
         $user = $request->user();
 
         //name
-        if ($request->name == '' ) {
+        if ($request->name == '') {
             return callback_data(401, 'name_required');
-        }
-        elseif ( is_numeric($request->name) ) {
+        } elseif (is_numeric($request->name)) {
             return callback_data(401, 'name_string');
         }
 
         //email
-        $emails = User::where('id' , '!=' , $user->id)->pluck('email')->toArray();
-        if ($request->email == '' ) {
+        $emails = User::where('id', '!=', $user->id)->pluck('email')->toArray();
+        if ($request->email == '') {
             return callback_data(401, 'email_required');
-        }elseif (in_array($request->email, $emails )) {
+        } elseif (in_array($request->email, $emails)) {
             return callback_data(401, 'email_exist');
         }
 
         //phone
-        $phones = User::where('id' , '!=' , $user->id)->pluck('phone')->toArray();
-        if ($request->phone == '' ) {
+        $phones = User::where('id', '!=', $user->id)->pluck('phone')->toArray();
+        if ($request->phone == '') {
             return callback_data(401, 'phone_required');
-        }elseif (in_array($request->phone, $phones )) {
+        } elseif (in_array($request->phone, $phones)) {
             return callback_data(401, 'phone_exist');
         }
 

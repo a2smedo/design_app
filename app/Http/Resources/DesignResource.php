@@ -16,6 +16,7 @@ class DesignResource extends JsonResource
     {
          return [
             'id' => $this->id,
+            'type' => $this->type,
             'name' => $this->name(),
             'main_img' => $this->main_img,
             'desc' => $this->desc(),
@@ -29,7 +30,7 @@ class DesignResource extends JsonResource
             'rate' => $this->rate,
 
             'designimgs' => DesignimgResource::collection($this->whenLoaded('designimgs')),
-            
+
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use App\Models\Order;
+
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -23,7 +25,7 @@ class OrderController extends Controller
     public function delete(Order $order)
     {
         $order->delete();
-        return back();
+        return redirect(url("/dashboard/orders"));
     }
 
 
@@ -33,6 +35,7 @@ class OrderController extends Controller
             'status' => "accepted",
         ]);
 
+     
         return redirect(url("/dashboard/orders/show/$order->id"));
     }
 

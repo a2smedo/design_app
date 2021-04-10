@@ -29,13 +29,13 @@ class CompetitionController extends Controller
 
     public function show(Request $request)
     {
-        $competition = Competition::with('competition_designs')->find($request->id);
+        $competition = Competition::with('competitionDesigns')->find($request->id);
 
-        if (!$competition) {
+        if (! $competition) {
             return callback_data(401, 'no_data');
         }
 
-        return callback_data(200, '', new CompetitionResource($competition));
+        return callback_data(200, 'competition', new CompetitionResource($competition));
     }
 
 
@@ -67,7 +67,7 @@ class CompetitionController extends Controller
         if ($user) {
 
             $competition_designs_user = DB::table('competitiondesign_user')
-            ->where('competitiondesign_id', $competitionDesign->id)
+            ->where('competition_design_id', $competitionDesign->id)
             ->where('user_id', $user->id)
             ->get()->toArray();
 
@@ -83,13 +83,13 @@ class CompetitionController extends Controller
         }
 
         //update competition_designs rate
-        $competition_designs_rates = DB::table('competitiondesign_user')->select(array('competitiondesign_id', DB::raw('AVG(rate) as rate')))
-            ->where('competitiondesign_id', $competitionDesign->id)->groupBy('competitiondesign_id')->get();
+        $competition_designs_rates = DB::table('competitiondesign_user')->select(array('competition_design_id', DB::raw('AVG(rate) as rate')))
+            ->where('competition_design_id', $competitionDesign->id)->groupBy('competition_design_id')->get();
 
         foreach ($competition_designs_rates as $dRate) {
 
-            if ($competitionDesign->id == $dRate->competitiondesign_id) {
-                $competitionDesign->where('id', $dRate->competitiondesign_id)
+            if ($competitionDesign->id == $dRate->competition_design_id) {
+                $competitionDesign->where('id', $dRate->competition_design_id)
                     ->update(['rate' => $dRate->rate]);
             }
         }

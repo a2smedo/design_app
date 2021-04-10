@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\OrderResource;
+use App\Models\Notification;
 
 class OrderController extends Controller
 {
@@ -33,9 +34,15 @@ class OrderController extends Controller
             'details' => $request->details,
         ]);
 
+        Notification::create([
+            'title' => $user->name,
+            'message' => 'new order ready',
+            'type' => 'order',
+
+        ]);
         $code = verification_code();
 
-//        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
         return callback_data(200, 'order_created');
     }
 
@@ -65,8 +72,16 @@ class OrderController extends Controller
             'imgs' => $request->imgs,
             'details' => $request->details,
         ]);
+
+        Notification::create([
+            'title' => $user->name,
+            'message' => 'new order request',
+            'type' => 'order',
+
+        ]);
+
         $code = verification_code();
-//        Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
+       Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
         return callback_data(200, 'order_created');
     }
 

@@ -48,7 +48,7 @@
 
             <div class="card-tools">
               <div class="card-tools">
-                <a href="{{ url('/dashboard/packages/create') }}" class="btn btn-primary btn-sm">Add new</a>
+                <a href="{{ url('/dashboard/packages/create') }}" class="btn btn-primary btn-sm" title="Add new Package">Add new</a>
               </div>
             </div>
           </div>
@@ -80,15 +80,15 @@
 
 
                   <td>
-                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/packages/show/{$package->id}") }} ">
+                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/packages/show/{$package->id}") }} " title="Show Package">
                       <i class="fas fa-eye"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-warning" href=" {{ url("/dashboard/packages/edit/{$package->id}") }} ">
+                    <a class="btn btn-sm btn-warning" href=" {{ url("/dashboard/packages/edit/{$package->id}") }} " title="Edit Package">
                       <i class="fas fa-edit"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/packages/delete/{$package->id}") }} ">
+                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/packages/delete/{$package->id}") }} " title="Delete Package" onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
 

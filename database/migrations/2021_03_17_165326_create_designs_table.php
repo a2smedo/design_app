@@ -28,6 +28,7 @@ class CreateDesignsTable extends Migration
             $table->string('color', 255)->nullable();
             $table->text('details');
             $table->float('rate', 3,1);
+            $table->boolean('type');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

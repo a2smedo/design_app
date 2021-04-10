@@ -37,7 +37,7 @@
                       <label for="exampleInputFile">Upload Image</label>
                       <div class="input-group">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="imgs[]" multiple >
+                          <input type="file" class="custom-file-input" name="imgs[]" multiple required accept="image/*" >
                           <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                         </div>
                       </div>
