@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\Admin\MessageController;
 use App\Http\Controllers\Web\Admin\PackageController;
 use App\Http\Controllers\Web\Admin\CompetitionController;
 use App\Http\Controllers\Web\Admin\NotificationController;
+use App\Http\Controllers\Web\Admin\SendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,23 +94,23 @@ Route::prefix('dashboard')->middleware(['auth', 'enterDashboard'])->group(functi
 
 
     //packages
-    Route::get('/packages',[PackageController::class, 'index']);
-    Route::get('/packages/show/{package}',[PackageController::class, 'show']);
-    Route::get('/packages/create',[PackageController::class, 'create']);
-    Route::post('/packages/store',[PackageController::class, 'store']);
-    Route::get('/packages/edit/{package}',[PackageController::class, 'edit']);
-    Route::post('/packages/update/{package}',[PackageController::class, 'update']);
-    Route::get('/packages/delete/{package}',[PackageController::class, 'delete']);
+    Route::get('/packages', [PackageController::class, 'index']);
+    Route::get('/packages/show/{package}', [PackageController::class, 'show']);
+    Route::get('/packages/create', [PackageController::class, 'create']);
+    Route::post('/packages/store', [PackageController::class, 'store']);
+    Route::get('/packages/edit/{package}', [PackageController::class, 'edit']);
+    Route::post('/packages/update/{package}', [PackageController::class, 'update']);
+    Route::get('/packages/delete/{package}', [PackageController::class, 'delete']);
 
 
     //users
-    Route::get('/users',[UserController::class, 'index']);
-    Route::get('/users/delete/{id}',[UserController::class, 'delete']);
+    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users/delete/{id}', [UserController::class, 'delete']);
 
     //orders
-    Route::get('/orders',[OrderController::class, 'index']);
-    Route::get('/orders/show/{order}',[OrderController::class, 'show']);
-    Route::get('/orders/delete/{order}',[OrderController::class, 'delete']);
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/show/{order}', [OrderController::class, 'show']);
+    Route::get('/orders/delete/{order}', [OrderController::class, 'delete']);
 
     Route::get('/orders/accepted/{order}', [OrderController::class, 'accepted']);
     Route::get('/orders/completed/{order}', [OrderController::class, 'completed']);
@@ -121,10 +122,18 @@ Route::prefix('dashboard')->middleware(['auth', 'enterDashboard'])->group(functi
     Route::get('/messages/show/{contact}', [MessageController::class, 'show']);
     Route::post('/messages/response/{contact}', [MessageController::class, 'response']);
 
+
+
     //Notifications
+    Route::get('/notifications', [NotificationController::class, 'index']);
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::get('/notifications/delete/{notification}', [NotificationController::class, 'delete']);
 
+    Route::get('/notifications/allSeen', [NotificationController::class, 'allSeen']);
+
+    //send Notifications
+    Route::get('/notifications/create', [SendController::class, 'create']);
+    Route::post('/notifications/send', [SendController::class, 'send']);
 
 
 
@@ -137,8 +146,4 @@ Route::prefix('dashboard')->middleware(['auth', 'enterDashboard'])->group(functi
         Route::get('/admins/promot/{id}', [AdminController::class, 'promot']);
         Route::get('/admins/demot/{id}', [AdminController::class, 'demot']);
     });
-
-
-
-
 });

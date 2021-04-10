@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Collections\CatController;
 use App\Http\Controllers\Api\Collections\CompetitionController;
+use App\Http\Controllers\Api\Collections\ContactController;
 use App\Http\Controllers\Api\Collections\DesignController;
 use App\Http\Controllers\Api\Collections\HomeController;
 use App\Http\Controllers\Api\Collections\OrderController;
@@ -84,5 +85,9 @@ Route::middleware('lang')->group(function () {
         Route::get('competitions/designs', [CompetitionController::class, 'getAllCompetitionDesigns']);
         //add rate competitions
         Route::post('competitions/designs/add-rate/{competitionDesign}', [CompetitionController::class, 'addRate']);
+
+
+        //send message to admin
+        Route::post('contact/send-message', [ContactController::class, 'sendMessage']);
     });
 });

@@ -18,6 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->string('title',255);
             $table->text('message',255);
             $table->enum('type',['user', 'order']);
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
     }

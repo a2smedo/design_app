@@ -9,14 +9,15 @@
 
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="javascript:;" aria-expanded="fals" title="Notifications">
+      <a class="nav-link" data-toggle="dropdown" id="notification" href="javascript:;" aria-expanded="fals"
+        title="Notifications">
         <i class="far fa-bell"></i>
-        <span class="badge badge-warning navbar-badge">{{ $notifications_count }}
+        <span class="badge badge-warning navbar-badge " id="noti">{{ $notifications_count }}
         </span>
       </a>
 
-      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left " style="left: inherit; right: 0px; width: 300px;">
-        <span class="dropdown-item dropdown-header">
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left div-noti " style="left: inherit; right: 0px; width: 300px;">
+        <span class="dropdown-item dropdown-header noti">
 
           {{ $notifications_count }}
 
@@ -28,40 +29,44 @@
 
         </span>
 
+
         @foreach ($notifications as $noti)
 
           <div class="dropdown-divider"></div>
+          @if ($noti->is_read == 0)
+            @if ($noti->type == 'order')
+              <a href="{{ url('/dashboard/orders') }}" class="dropdown-item n-link">
+                <i class="fas fa-envelope mr-2"></i>
 
-          @if ($noti->type == 'order')
+                <span class="text-muted">
+                  {{ $noti->where('type', 'order')->count() }}
 
-            <a href="{{ url('/dashboard/orders') }}" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i>
+                </span>
+                <span class="ml-1 text-muted"> {{ $noti->message }} </span>
+                <span class="float-right text-muted text-sm">{{ $currentMin }} mins</span>
+              </a>
 
-              <span class="text-muted">
-                {{ $noti->where('type', 'order')->count() }}
+            @else
+              <a href="{{ url('/dashboard/users') }}" class="dropdown-item n-link">
+                <i class="fas fa-envelope mr-2"></i>
 
-              </span>
-              <span class="ml-1 text-muted"> {{ $noti->message }} </span>
-              <span class="float-right text-muted text-sm">{{ $currentMin }} mins</span>
-            </a>
+                <span class="text-muted">
 
-         @else
-            <a href="{{ url('/dashboard/users') }}" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i>
+                  {{ $noti->where('type', 'user')->count() }}
+                </span>
+                <span class="ml-1 text-muted"> {{ $noti->message }} </span>
+                <span class="float-right text-muted text-sm">{{ $currentMin }} mins</span>
+              </a>
+            @endif
 
-              <span class="text-muted">
-
-                {{ $noti->where('type', 'user')->count() }}
-              </span>
-              <span class="ml-1 text-muted"> {{ $noti->message }} </span>
-              <span class="float-right text-muted text-sm">{{ $currentMin }} mins</span>
-            </a>
           @endif
 
           <div class="dropdown-divider"></div>
-          @endforeach
-          <a href="{{ url('/dashboard/notifications') }}" class="dropdown-item dropdown-footer">See All
-            Notifications</a>
+        @endforeach
+
+
+        <a href="{{ url('/dashboard/notifications') }}" class="dropdown-item dropdown-footer">See All
+          Notifications</a>
 
       </div>
     </li>

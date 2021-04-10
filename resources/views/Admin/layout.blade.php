@@ -173,6 +173,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url('/dashboard/notifications/create') }} " class="nav-link">
+                <i class="nav-icon fas fa-envelope"></i>
+                <p>
+                  Send Notification
+                </p>
+              </a>
+            </li>
 
 
 
@@ -262,11 +270,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
     crossorigin="anonymous"></script>
 
 
-  <script>
-    $('#logout').click(function(e) {
-      e.preventDefault();
+  {{-- notification --}}
 
-      $('#logout_form').submit()
+  <script>
+    $(document).ready(function() {
+
+      $('#logout').click(function(e) {
+        e.preventDefault();
+
+        $('#logout_form').submit()
+
+      });
+
+
+
+      $('#notification').on('click', function() {
+
+        $.ajax({
+          type: "GET",
+          url: "{{ url('dashboard/notifications/allSeen') }}",
+          //data: 'data',
+          contentType: false,
+          processData: false,
+          success: function(response) {
+
+            setInterval(function() {
+              $('#noti').text(0);
+              $('.noti').text("No notifications");
+              $('.n-link', '.div-noti').hide();
+            }, 3000);
+
+
+          }
+        });
+
+
+      });
 
     });
 

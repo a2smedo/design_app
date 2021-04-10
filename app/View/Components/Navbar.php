@@ -27,7 +27,8 @@ class Navbar extends Component
     public function render()
     {
 
-        $data['notifications_count'] = Notification::count();
+        $data['notifications_count'] = Notification::where('is_read', '=', 0)
+            ->count();
         $data['notifications'] = Notification::groupBy('type')->get();
 
         $dMint = Carbon::now();
