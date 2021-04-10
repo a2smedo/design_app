@@ -28,7 +28,7 @@ class Navbar extends Component
     {
 
         $data['notifications_count'] = Notification::count();
-        $data['notifications'] = Notification::groupBy('title')->get();
+        $data['notifications'] = Notification::groupBy('type')->get();
 
         $dMint = Carbon::now();
         $currentMin = 0;

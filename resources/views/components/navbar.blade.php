@@ -42,10 +42,10 @@
 
               </span>
               <span class="ml-1 text-muted"> {{ $noti->message }} </span>
-              <span class="float-right text-muted text-sm">{{$currentMin}} mins</span>
+              <span class="float-right text-muted text-sm">{{ $currentMin }} mins</span>
             </a>
 
-          @else
+         @else
             <a href="{{ url('/dashboard/users') }}" class="dropdown-item">
               <i class="fas fa-envelope mr-2"></i>
 
@@ -54,13 +54,14 @@
                 {{ $noti->where('type', 'user')->count() }}
               </span>
               <span class="ml-1 text-muted"> {{ $noti->message }} </span>
-              <span class="float-right text-muted text-sm">{{$currentMin}} mins</span>
+              <span class="float-right text-muted text-sm">{{ $currentMin }} mins</span>
             </a>
-
           @endif
+
           <div class="dropdown-divider"></div>
-          <a href="{{url('/dashboard/notifications')}}" class="dropdown-item dropdown-footer">See All Notifications</a>
-        @endforeach
+          @endforeach
+          <a href="{{ url('/dashboard/notifications') }}" class="dropdown-item dropdown-footer">See All
+            Notifications</a>
 
       </div>
     </li>

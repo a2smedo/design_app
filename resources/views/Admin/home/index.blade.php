@@ -9,8 +9,8 @@
       font-size: 50px;
     }
 
-    th{
-        font-size: 15px !important;
+    th {
+      font-size: 15px !important;
     }
 
   </style>
@@ -183,7 +183,17 @@
                       </td>
 
                       <td>
-                        aaa
+
+                        @if ($design->type == 1)
+                          <span class="badge bg-cyan">
+                            Paid
+                          </span>
+                        @else
+                          <span class="badge bg-gray">
+                            Free
+                          </span>
+                        @endif
+
                       </td>
 
                     </tr>
@@ -263,7 +273,7 @@
                       </td>
 
                       <td>
-                         {{ Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}
+                        {{ Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}
                       </td>
 
                     </tr>
