@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,9 +61,12 @@ class User extends Authenticatable
         return $this->belongsTo(Package::class,'package_id');
     }
 
-    public function package_name()
+    public function package_name($lang=null)
     {
-        return json_decode($this->package->name)->ar;
+        //return json_decode($this->package->name);
+
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->package->name)->$lang;
     }
 
     //package

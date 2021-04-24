@@ -69,7 +69,7 @@
 
                 <p>Design Color : {{ $order->design->color('en') }} || {{ $order->design->color('ar') }} </p>
 
-                <p>Design Color : {{ $order->design->font('en') }} || {{ $order->design->font('ar') }} </p>
+                <p>Design Font : {{ $order->design->font('en') }} || {{ $order->design->font('ar') }} </p>
 
               </div>
 

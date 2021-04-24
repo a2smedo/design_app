@@ -105,6 +105,7 @@ Route::prefix('dashboard')->middleware(['auth', 'enterDashboard'])->group(functi
 
     //users
     Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users/show/{id}', [UserController::class, 'show']);
     Route::get('/users/delete/{id}', [UserController::class, 'delete']);
 
     //orders
