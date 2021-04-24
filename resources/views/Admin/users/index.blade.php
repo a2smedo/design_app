@@ -60,6 +60,7 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Type</th>
+                <th>Package</th>
                 <th>Verified</th>
                 <th>Actions</th>
               </tr>
@@ -80,6 +81,10 @@
                     @else
                       <span class="badge badge-danger">Free</span>
                     @endif
+                  </td>
+
+                  <td>
+                    @if ($user->package)<span class="badge badge-primary">{{ $user->package_name() }}</span>@endif
                   </td>
 
                   <td>

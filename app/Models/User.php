@@ -57,7 +57,12 @@ class User extends Authenticatable
     // rule
     public function package()
     {
-        return $this->belongsTo(Package::class);
+        return $this->belongsTo(Package::class,'package_id');
+    }
+
+    public function package_name()
+    {
+        return json_decode($this->package->name)->ar;
     }
 
     //package
