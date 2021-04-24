@@ -29,7 +29,8 @@ class AuthController extends Controller
             'password' => 'required',
             'password_confirmation' => 'required',
             'phone' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'package_id' => 'required_if:type,==,paid|exists:packages,id',
         ]);
 
         if ($validator->fails()) {
@@ -70,6 +71,7 @@ class AuthController extends Controller
 
         $user = User::create([
             'rule_id' => $rule_user->id,
+            'package_id' => $request->package_id,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
