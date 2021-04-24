@@ -14,14 +14,14 @@ class MessageController extends Controller
     {
         $data['messages'] = Contact::orderBy('id', 'DESC')->paginate(8);
 
-        return view('admin.messages.index')->with($data);
+        return view('Admin.messages.index')->with($data);
     }
 
     public function show(Contact $contact)
     {
         $data['contact'] = $contact;
 
-        return view('admin.messages.show')->with($data);
+        return view('Admin.messages.show')->with($data);
     }
 
 

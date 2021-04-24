@@ -38,7 +38,7 @@
 
     <div class="row">
         <div class="col">
-            @include('admin.inc.errors')
+            @include('Admin.inc.errors')
         </div>
     </div>
 
@@ -82,7 +82,7 @@
                     @if ($cat->active == 1)
                       <span class="badge badge-success">Active</span>
                     @else
-                      <span class="badge badge-danger">Dactive</span>
+                      <span class="badge badge-danger">Deactive</span>
                     @endif
                   </td>
 

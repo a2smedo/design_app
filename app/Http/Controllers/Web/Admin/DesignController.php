@@ -18,7 +18,7 @@ class DesignController extends Controller
     public function index()
     {
         $data['designs'] = Design::orderBy('id', 'DESC')->paginate(6);
-        return view('admin.designs.index')->with($data);
+        return view('Admin.designs.index')->with($data);
     }
 
     //GET One Design

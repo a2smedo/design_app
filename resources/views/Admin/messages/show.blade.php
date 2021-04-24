@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 
 @section('head')
@@ -117,7 +117,7 @@
 
     <div class="row">
       <div class="col">
-        @include('admin.inc.errors')
+        @include('Admin.inc.errors')
       </div>
     </div>
 

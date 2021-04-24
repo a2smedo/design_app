@@ -18,7 +18,7 @@ class AdminController extends Controller
             ->paginate(10);
 
 
-        return view('admin.admins.index')->with($data);
+        return view('Admin.admins.index')->with($data);
     }
 
 
@@ -27,7 +27,7 @@ class AdminController extends Controller
         $data['rules'] = Rule::select("id", "name")
             ->whereIn("name", ["super_admin", "admin"])
             ->get();
-        return view('admin.admins.create')->with($data);
+        return view('Admin.admins.create')->with($data);
     }
 
     public function store(Request $request)

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('Admin.layout')
 
 
 @section('head')
@@ -49,7 +49,7 @@
         </div>
         <div class="card-body p-0">
 
-          <form action="{{ url('/dashboard/messages/send') }}" method="post">
+          <form action="{{ url('/dashboard/notifications/send') }}" method="post">
             @csrf
 
 
@@ -89,7 +89,7 @@
 
     <div class="row">
       <div class="col">
-        @include('admin.inc.errors')
+        @include('Admin.inc.errors')
       </div>
     </div>
 

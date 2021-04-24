@@ -13,7 +13,7 @@ class CatController extends Controller
     public function index()
     {
         $data['cats'] = Cat::orderBy('id', 'DESC')->paginate(6);
-        return view('admin.cats.index')->with($data);
+        return view('Admin.cats.index')->with($data);
     }
 
     public function store(Request $request)

@@ -242,7 +242,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2021 <a href="https://adminlte.io">Ahmed Salah</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; 2021 <a href="https://adminlte.io">Naser Khaalefa</a>.</strong> All rights reserved.
     </footer>
   </div>
   <!-- ./wrapper -->

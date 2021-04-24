@@ -16,7 +16,7 @@ class UserController extends Controller
                             ->orderBy('id', 'DESC')
                             ->paginate(6);
 
-        return view('admin.users.index')->with($data);
+        return view('Admin.users.index')->with($data);
 
     }
 
@@ -27,5 +27,5 @@ class UserController extends Controller
         return redirect(url("/dashboard/users"));
     }
 
-    
+
 }
