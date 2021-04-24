@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'rule_id',
+        'package_id',
         'phone',
         'type',
         'status'
@@ -51,6 +52,12 @@ class User extends Authenticatable
     public function rule()
     {
         return $this->belongsTo(Rule::class);
+    }
+
+    // rule
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
     }
 
     //package
