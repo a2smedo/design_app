@@ -29,6 +29,8 @@ class User extends Authenticatable
 
     ];
 
+    protected $with = ['package'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -58,11 +60,6 @@ class User extends Authenticatable
     public function package()
     {
         return $this->belongsTo(Package::class,'package_id');
-    }
-
-    public function package_name()
-    {
-        return json_decode($this->package->name)->ar;
     }
 
     //package

@@ -35,7 +35,7 @@ class ForgotPasswordController extends Controller
             return callback_data(401, 'user_not_found');
         }
 
-        $code = Str::random(10);
+        $code = verification_code();
         try {
             DB::table('password_resets')->insert([
                 'email' => $email,

@@ -97,7 +97,7 @@ class AuthController extends Controller
             ]);
 
 //            Mail::to($user->email)->send(new ActivationMail(['code' => $code]));
-            return callback_data(200, 'registered', $user);
+            return callback_data(200, 'registered');
         } else {
             return callback_data(401, 'user_not_found');
         }
