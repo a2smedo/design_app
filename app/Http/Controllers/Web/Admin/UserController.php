@@ -6,6 +6,7 @@ use App\Models\Rule;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -19,6 +20,23 @@ class UserController extends Controller
         return view('Admin.users.index')->with($data);
 
     }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        $orders = Order::where('user_id', $user->id)->get();
+
+
+        return view('Admin.users.show',[
+            'user' => $user,
+            'orders' => $orders
+        ]);
+    }
+
+
+
+   
+
 
     public function delete($id)
     {

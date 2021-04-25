@@ -1,13 +1,13 @@
 @extends('Admin.layout')
 @section('title')
-Orders
+  Orders
 @endsection
 
 @section('head')
-Orders
+  Orders
 @endsection
 @section('li')
-<a href="{{url('/dashboard/orders')}}">Orders</a>
+  <a href="{{ url('/dashboard/orders') }}">Orders</a>
 @endsection
 
 
@@ -67,7 +67,7 @@ Orders
               </tr>
             </thead>
             <tbody>
-            @forelse ($orders as $order)
+              @forelse ($orders as $order)
 
                 <tr id="tr">
                   <td> {{ $loop->iteration }} </td>
@@ -99,20 +99,22 @@ Orders
 
 
                   <td>
-                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/orders/show/{$order->id}") }} " title="Show Order">
+                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/orders/show/{$order->id}") }} "
+                      title="Show Order">
                       Show
                       <i class="fas fa-eye"></i>
                     </a>
 
-                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/orders/delete/{$order->id}") }} " title="Delete Order" onclick="return confirm('Are you sure?')">
+                    <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/orders/delete/{$order->id}") }} "
+                      title="Delete Order" onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
 
                   </td>
                 </tr>
               @empty
-                  <p> No Orders found </p>
-            @endforelse
+                <p> No Orders found </p>
+              @endforelse
             </tbody>
           </table>
 
@@ -134,9 +136,9 @@ Orders
 
 @section('Script')
 
-  <script>
+<script>
 
 
-  </script>
+</script>
 
 @endsection

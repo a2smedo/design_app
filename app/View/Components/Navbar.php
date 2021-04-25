@@ -35,7 +35,7 @@ class Navbar extends Component
         $currentMin = 0;
         foreach ($data['notifications'] as $val) {
 
-            $currentMin = $dMint->diffInMinutes($val->created_at);
+            $currentMin = $dMint->diffForHumans($val->created_at);
         }
 
         $data['currentMin'] = $currentMin;

@@ -84,7 +84,9 @@
                   </td>
 
                   <td>
-                    @if ($user->package)<span class="badge badge-primary">{{ $user->package_name() }}</span>@endif
+                    @if ($user->package)
+                    <span class="badge badge-primary">{{ $user->package_name('en') }}</span>
+                    @endif
                   </td>
 
                   <td>
@@ -96,6 +98,10 @@
                   </td>
 
                   <td>
+                    <a class="btn btn-sm btn-info" href=" {{ url("/dashboard/users/show/{$user->id}") }} " title="Show Package">
+                        <i class="fas fa-eye"></i>
+                    </a>
+
                     <a class="btn btn-sm btn-danger" href=" {{ url("/dashboard/users/delete/$user->id") }} " title="Delete User " onclick="return confirm('Are you sure?')">
                       <i class="fas fa-trash"></i>
                     </a>
